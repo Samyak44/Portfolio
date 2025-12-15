@@ -1,13 +1,13 @@
 'use client'
 
-import Tilt from 'react-parallax-tilt';
 import { motion } from 'framer-motion';
 import { useState } from "react";
+import Tilt from 'react-parallax-tilt';
 
-import { styles } from '@/styles';
 import { github, web } from '@/assets';
-import { SectionWrapper } from '@/hoc';
 import { projects } from '@/constants';
+import { SectionWrapper } from '@/hoc';
+import { styles } from '@/styles';
 import { fadeIn, textVariant } from '@/utils/motion';
 
 const ProjectCard = ({ index, name, description, tags, image, source_code_link, demo_url }) => {

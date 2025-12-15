@@ -1,11 +1,11 @@
 'use client'
 
-import { useState } from "react"
 import Link from 'next/link';
+import { useState } from "react";
 
-import { styles } from '@/styles';
+import { close, logo, menu } from '@/assets';
 import { navLinks } from '@/constants';
-import { logo, menu, close } from '@/assets';
+import { styles } from '@/styles';
 
 const Navbar = () => {
   const [active, setActive] = useState("");
