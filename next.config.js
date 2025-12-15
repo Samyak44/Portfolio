@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: false,
   output: 'export',
   basePath: process.env.DEPLOY_ENV === 'gh-pages' ? '/Portfolio' : '',
   images: {
