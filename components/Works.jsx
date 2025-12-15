@@ -49,7 +49,7 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link, 
               title="View Source Code"
             >
               <img
-                src={demo_url ? web : github}
+                src={demo_url ? web.src : github.src}
                 alt="github"
                 className="w-6 h-6 object-contain"
               />
