@@ -9,7 +9,7 @@ import { Suspense } from "react";
 import CanvasLoader from "../Loader";
 
 const Ball = (props) => {
-  const [decal] = useTexture([props.imgUrl]);
+  const [decal] = useTexture([props.imgUrl.src || props.imgUrl]);
 
   return (
     <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
