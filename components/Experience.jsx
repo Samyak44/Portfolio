@@ -1,13 +1,13 @@
 'use client'
 
-import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import { motion } from 'framer-motion';
+import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 
 import 'react-vertical-timeline-component/style.min.css';
 
-import { styles } from '@/styles';
 import { experiences } from '@/constants';
 import { SectionWrapper } from '@/hoc';
+import { styles } from '@/styles';
 import { textVariant } from '@/utils/motion';
 
 const ExperienceCard = ({ experience }) => (
@@ -19,7 +19,7 @@ const ExperienceCard = ({ experience }) => (
     icon={
       <div className='flex justify-center items-center w-full h-full'>
         <img
-          src={experience.icon}
+          src={experience.icon.src || experience.icon}
           alt={experience.company_name}
           className='w-[60%] h-[60%] object-contain'
         />

@@ -34,7 +34,7 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link, 
       >
         <div className="relative w-full h-48 sm:h-54 md:h-62 lg:h-68 xl:h-76 rounded-3xl overflow-hidden flex-shrink-0">
           <img
-            src={image}
+            src={image.src || image}
             alt={name}
             className="w-full h-full object-fill rounded-3xl"
           />
