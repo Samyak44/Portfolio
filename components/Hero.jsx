@@ -8,15 +8,19 @@ import { ComputersCanvas } from './canvas';
 const Hero = () => {
   return (
     <section className="relative w-full h-screen mx-auto">
-      <div className={`${styles.paddingX} absolute inset-0 top-[120px]
-      max-w-7xl mx-auto flex flex-row items-start gap-5`}
+      <div
+        className={`${styles.paddingX} absolute inset-0
+          top-[100px] xs:top-[120px] sm:top-[120px]
+          max-w-7xl mx-auto
+          flex flex-col sm:flex-row items-start gap-3 sm:gap-5`}
         style={{ zIndex: 2 }}
       >
-        <div className="flex flex-col justify-center items-center mt-5">
-          <div className="w-5 h-5 rounded-full bg-[#915eff]" />
-          <div className="w-1 sm:h-80 h-40 violet-gradient" />
+        <div className="flex flex-col justify-center items-center mt-3 sm:mt-5">
+          <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#915eff]" />
+          <div className="w-1 sm:h-80 h-32 xs:h-40 violet-gradient" />
         </div>
-        <div>
+
+        <div className="flex-1">
           <h1 className={`${styles.heroHeadText} text-white text-shadow`}>
             Hi, I&apos;m <span className="text-[#915eff]">Samyak</span>
           </h1>
@@ -26,31 +30,28 @@ const Hero = () => {
             <br className="sm:block hidden" />
             Let&apos;s connect and shape the future of AI together!
           </p>
-        </div>
 
-        <div className="text-center mt-4">
-          <button className="button-resume bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">
-            <a
-              className="text-decoration-none flex items-center justify-center"
-              href="/cv.pdf"
-              download={true}
-              target="_blank"
-              rel="noreferrer"
-
-            >
-              <FaFileDownload className="me-1" />
-              Resume
-            </a>
-          </button>
+          <div className="mt-6 sm:mt-8">
+            <button className="button-resume bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 sm:py-3 sm:px-6 rounded-md text-sm sm:text-base">
+              <a
+                className="text-decoration-none flex items-center justify-center"
+                href="/cv.pdf"
+                download={true}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FaFileDownload className="mr-2" />
+                Resume
+              </a>
+            </button>
+          </div>
         </div>
       </div>
 
       <ComputersCanvas />
 
-      <div className="absolute xs:bottom-10 bottom-32 w-full flex
-      justify-center items-center">
-        <div className="w-[35px] h-[64px] rounded-3xl border-4
-          border-secondary flex justify-center items-start p-2">
+      <div className="absolute xs:bottom-8 bottom-24 sm:bottom-10 w-full flex justify-center items-center">
+        <div className="w-[30px] h-[50px] xs:w-[35px] xs:h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
           <motion.div
             animate={{
               y: [0, 24, 0]
@@ -60,7 +61,7 @@ const Hero = () => {
               repeat: Infinity,
               repeatType: 'loop'
             }}
-            className="w-3 h-3 rounded-full bg-secondary mb-1"
+            className="w-2 h-2 xs:w-3 xs:h-3 rounded-full bg-secondary mb-1"
           />
         </div>
       </div>

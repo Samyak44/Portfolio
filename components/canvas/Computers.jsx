@@ -55,15 +55,20 @@ const ComputersCanvas = () => {
   return (
     <Canvas
       frameloop="demand"
-      shadows
-      camera={{ position: [20, 3, 5], fov: 25 }}
-      gl={{ preserveDrawingBuffer: true }}
+      shadows={!isMobile}
+      camera={{ position: [20, 3, 5], fov: isMobile ? 30 : 25 }}
+      gl={{
+        preserveDrawingBuffer: true,
+        antialias: !isMobile,
+        powerPreference: isMobile ? "low-power" : "high-performance"
+      }}
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
           enableZoom={false}
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
+          enableDamping={!isMobile}
         />
         <Computers isMobile={isMobile} />
       </Suspense>

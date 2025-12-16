@@ -243,3 +243,44 @@
       -2.6em 0em 0 0em rgba(255, 255, 255, 0.7), -1.8em -1.8em 0 0em #ffffff;
   }
 }
+
+/* Mobile-specific enhancements */
+@media (max-width: 640px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Improve touch targets for better mobile UX */
+  button, a, input, textarea {
+    min-height: 44px;
+  }
+
+  /* Prevent horizontal scroll */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Responsive button-resume */
+  .button-resume {
+    --b: 2px;
+    --s: .35em;
+    padding: calc(.25em + var(--s)) calc(.7em + var(--s));
+    font-size: 16px;
+  }
+}
+
+/* Better text shadow on mobile */
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width: 640px) {
+  .text-shadow {
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Prevent body scroll during canvas interaction */
+canvas {
+  touch-action: none;
+}

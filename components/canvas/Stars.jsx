@@ -3,27 +3,33 @@ import { PointMaterial, Points } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as random from "maath/random/dist/maath-random.esm";
 import { Suspense, useMemo, useRef } from "react";
+import { useDeviceCapabilities } from "@/utils/deviceDetection";
 
 const Stars = (props) => {
   const ref = useRef();
-  
+  const capabilities = useDeviceCapabilities();
+
   const sphere = useMemo(() => {
-    const positions = new Float32Array(5000 * 3);
+    // Reduce particle count on mobile/low-end devices
+    const particleCount = capabilities?.maxParticles || 5000;
+    const positions = new Float32Array(particleCount * 3);
     random.inSphere(positions, { radius: 1.2 });
-    
+
     // Replace any NaN values with 0
     for (let i = 0; i < positions.length; i++) {
       if (!Number.isFinite(positions[i])) {
         positions[i] = 0;
       }
     }
-    
+
     return positions;
-  }, []);
+  }, [capabilities]);
 
   useFrame((state, delta) => {
-    ref.current.rotation.x -= delta / 10;
-    ref.current.rotation.y -= delta / 10;
+    // Slower rotation on mobile to reduce CPU usage
+    const rotationSpeed = capabilities?.shouldSimplify3D ? delta / 20 : delta / 10;
+    ref.current.rotation.x -= rotationSpeed;
+    ref.current.rotation.y -= rotationSpeed;
   });
 
   return (
@@ -38,7 +44,7 @@ const Stars = (props) => {
         <PointMaterial
           transparent
           color="#f272c8"
-          size={0.002}
+          size={capabilities?.shouldSimplify3D ? 0.003 : 0.002}
           sizeAttenuation={true}
           depthWrite={false}
         />
